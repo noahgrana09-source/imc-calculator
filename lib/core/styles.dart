@@ -22,4 +22,13 @@ class AppStyles {
     fontSize: 16,
     fontWeight: FontWeight.normal,
   );
+
+  static ButtonStyle mainButton = ButtonStyle(
+    backgroundColor: WidgetStatePropertyAll(AppColors.accent),
+    shape: WidgetStatePropertyAll(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16)
+      )
+    )
+  );
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../core/colors.dart';
 import '../core/styles.dart';
 class NumberSelector extends StatefulWidget {
-  const NumberSelector({super.key});
-
+  final Function(int) onVariableChanged;
+  const NumberSelector({super.key, required this.onVariableChanged});
   @override
   State<NumberSelector> createState() => _NumberSelectorState();
 }
@@ -29,6 +29,7 @@ class _NumberSelectorState extends State<NumberSelector> {
             _buildNumberSelector("PESO", weightValue, contDiameter, (newValue){
               setState(() {
                 weightValue = newValue;
+                widget.onVariableChanged(weightValue);
               });}),
             _buildNumberSelector("EDAD", ageValue, contDiameter, (newValue){
               setState(() {
@@ -44,6 +45,7 @@ class _NumberSelectorState extends State<NumberSelector> {
              _buildNumberSelector("PESO", weightValue, contDiameter, (newValue){
               setState(() {
                 weightValue = newValue;
+                widget.onVariableChanged(weightValue);
               });}),
             _buildNumberSelector("EDAD", ageValue, contDiameter, (newValue){
               setState(() {
@@ -70,7 +72,7 @@ class _NumberSelectorState extends State<NumberSelector> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(title, style: AppStyles.subtitle,),
-            Text(value.toString(), style: AppStyles.subtitle,),
+            Text("$value kg", style: AppStyles.subtitle,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../core/colors.dart';
 import '../core/styles.dart';
 class HeightSelector extends StatefulWidget {
-  const HeightSelector({super.key});
-
+  final Function(double) onHeightChanged;
+  const HeightSelector({super.key, required this.onHeightChanged});
   @override
   State<HeightSelector> createState() => _HeightSelectorState();
 }
@@ -15,7 +15,7 @@ class _HeightSelectorState extends State<HeightSelector> {
     return LayoutBuilder(
       builder: (context, constraints){
         final screenWidth = MediaQuery.of(context).size.width;
-        final maxWidth = (constraints.maxWidth.isFinite ? constraints.maxWidth : screenWidth).clamp(112.0, 400.0);
+        final maxWidth = (constraints.maxWidth.isFinite ? constraints.maxWidth : screenWidth).clamp(142.0, 430.0);
         return Padding(
           padding: EdgeInsets.all(15),
           child: Container(
@@ -35,6 +35,7 @@ class _HeightSelectorState extends State<HeightSelector> {
                     onChanged: (newHeight){
                       setState((){
                         selectedHeight = newHeight;
+                        widget.onHeightChanged(selectedHeight);
                       });
                     },
                     min: 130,
