@@ -15,7 +15,6 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Center(child: Text("IMC Calculator", style: AppStyles.title),),
-          leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu_rounded), iconSize: 34,),
           backgroundColor: AppColors.primary60,
           foregroundColor: AppColors.textOrIcons,
         ),
